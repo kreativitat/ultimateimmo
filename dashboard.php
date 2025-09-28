@@ -63,7 +63,7 @@ $globalboxes = array();
 // Color theme : (#96BBBB, #F2E3BC, #618985, #C19875)
 
 if ($user->rights->ultimateimmo->read) {
-    $globalboxes[] = array('name' => $langs->trans('Proprietários'), 'color' =>'#C19875',
+    $globalboxes[] = array('name' => $langs->trans('Proprietários'), 'color' =>'#C19875', 'icon' => 'fa-users',
         'url' => dol_buildpath('/ultimateimmo/owner/immowner_list.php', 1),
         'url_add' => dol_buildpath('/ultimateimmo/owner/immoowner_card.php?action=create', 1),
         'right' => $user->rights->ultimateimmo->read,
@@ -76,7 +76,7 @@ if ($user->rights->ultimateimmo->read) {
 
 
 if ($user->rights->ultimateimmo->read) {
-    $globalboxes[] = array('name' => $langs->trans('IMOBILIÁRIO'), 'color' =>'#96BBBB',
+    $globalboxes[] = array('name' => $langs->trans('IMOBILIÁRIO'), 'color' =>'#96BBBB', 'icon' => 'fa-building',
         'url' => dol_buildpath('/ultimateimmo/property/immoproperty_list.php', 1),
         'url_add' => dol_buildpath('/ultimateimmo/property/immoproperty_card.php?action=create', 1),
         'right' => $user->rights->ultimateimmo->read,
@@ -88,7 +88,7 @@ if ($user->rights->ultimateimmo->read) {
 }
 
 if ($user->rights->ultimateimmo->read) {
-    $globalboxes[] = array('name' => $langs->trans('ARRENDAMENTOS'), 'color' =>'#F2E3BC',
+    $globalboxes[] = array('name' => $langs->trans('ARRENDAMENTOS'), 'color' =>'#F2E3BC', 'icon' => 'fa-key',
         'url' => dol_buildpath('/ultimateimmo/property/immorent_list.php', 1),
         'url_add' => dol_buildpath('/ultimateimmo/rent/immorent_card.php?action=create', 1),
         'right' => $user->rights->ultimateimmo->read,
@@ -100,7 +100,7 @@ if ($user->rights->ultimateimmo->read) {
 }
 
 if ($user->rights->ultimateimmo->read) {
-    $globalboxes[] = array('name' => $langs->trans('INQUILINOS'), 'color' =>'#C19875',
+    $globalboxes[] = array('name' => $langs->trans('INQUILINOS'), 'color' =>'#C19875', 'icon' => 'fa-user',
         'url' => dol_buildpath('/ultimateimmo/renter/immorenter_list.php', 1),
         'url_add' => dol_buildpath('/ultimateimmo/renter/immorenter_card.php?action=create', 1),
         'right' => $user->rights->ultimateimmo->read,
@@ -177,12 +177,15 @@ foreach ($globalboxes as $globalbox) {
 
     print '<div class="ultimateimmo-card">';
     print '<div class="ultimateimmo-left-side" style="background-color: '.$globalbox['color'].';"><i class="fa '.$globalbox['icon'].' icon"></i></div>';
-    print '<div class="ultimateimmo-right-side"><div class="inner"><b style="color: '.$globalbox['color'].';">'.$globalbox['name'].'</b>';
-    if (!empty($globalbox['url_add']) && $globalbox['right'])
-        print '<a href="'.$globalbox['url_add'].'" class="ultimateimmo-rounded-btn"><i class="fa fa-plus-circle fa-2x" style="color: '.$globalbox['color'].';"></i></a>';
+    print '<div class="ultimateimmo-right-side"><div class="inner">';
+    print '<div class="ultimateimmo-title-section">';
+    print '<b style="color: '.$globalbox['color'].';">'.$globalbox['name'].'</b>';
     foreach ($globalbox['lines'] as $line) {
         print '<div class="line-info">'.$line['title'].' : <a href="'.$line['url'].'"><span style="background-color: '.$globalbox['color'].'">' . $line['value'] . '</span></a></div>';
     }
+    print '</div>';
+    if (!empty($globalbox['url_add']) && $globalbox['right'])
+        print '<a href="'.$globalbox['url_add'].'" class="ultimateimmo-rounded-btn"><i class="fa fa-plus-circle fa-2x" style="color: '.$globalbox['color'].';"></i></a>';
     print '</div></div>';
     print '</div>';
 }
@@ -227,7 +230,7 @@ if ($user->rights->ultimateimmo->read) {
 				);
 			}
 
-			$globalboxes[] = array('name' => strtoupper($langs->trans('RenterLetToPay')), 'color' => '#C19875',
+			$globalboxes[] = array('name' => strtoupper($langs->trans('RenterLetToPay')), 'color' => '#C19875', 'icon' => 'fa-euro',
 				'url' => dol_buildpath('/ultimateimmo/payment/immopayment_card.php', 1),
 				'right' => $user->rights->ultimateimmo->read,
 				'lines' => $lineData
@@ -240,12 +243,15 @@ foreach ($globalboxes as $globalbox) {
 
     print '<div class="ultimateimmo-card-list">';
     print '<div class="ultimateimmo-left-side" style="background-color: '.$globalbox['color'].';"><i class="fa '.$globalbox['icon'].' icon"></i></div>';
-    print '<div class="ultimateimmo-right-side"><div class="inner"><b style="color: '.$globalbox['color'].';">'.$globalbox['name'].'</b>';
-    if (!empty($globalbox['url_add']) && $globalbox['right'])
-        print '<a href="'.$globalbox['url_add'].'" class="ultimateimmo-rounded-btn"><i class="fa fa-plus-circle fa-2x" style="color: '.$globalbox['color'].';"></i></a>';
+    print '<div class="ultimateimmo-right-side"><div class="inner">';
+    print '<div class="ultimateimmo-title-section">';
+    print '<b style="color: '.$globalbox['color'].';">'.$globalbox['name'].'</b>';
     foreach ($globalbox['lines'] as $line) {
         print '<div class="line-info">'.$line['title'].' : <a href="'.$line['url'].'"><span style="background-color: '.$globalbox['color'].'">' . $line['value'] . '</span></a></div>';
     }
+    print '</div>';
+    if (!empty($globalbox['url_add']) && $globalbox['right'])
+        print '<a href="'.$globalbox['url_add'].'" class="ultimateimmo-rounded-btn"><i class="fa fa-plus-circle fa-2x" style="color: '.$globalbox['color'].';"></i></a>';
     print '</div></div>';
     print '</div>';
 }

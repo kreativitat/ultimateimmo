@@ -127,23 +127,29 @@ div.mainmenu.result {
 }
 
 .ultimateimmo-card {
-	width: 270px;
-	min-height: 110px;
+	width: 300px;
+	min-height: 120px;
 	background-color: #fff;
-	border-radius: .25em;
+	border-radius: .5em;
 	color: #fff;
-	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 	padding: 0;
 	display: flex;
 	margin-right: 1%;
 	margin-bottom: 1%;
+	transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.ultimateimmo-card:hover {
+	transform: translateY(-2px);
+	box-shadow: rgba(50, 50, 93, 0.35) 0px 8px 16px -2px, rgba(0, 0, 0, 0.4) 0px 4px 10px -3px;
 }
 
 .ultimateimmo-left-side {
 	background-color: #FFBF69;
-	border-top-left-radius: .25rem;
-	border-bottom-left-radius: .25rem;
-	width: 10%;
+	border-top-left-radius: .5rem;
+	border-bottom-left-radius: .5rem;
+	width: 15%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -151,16 +157,22 @@ div.mainmenu.result {
 }
 
 .ultimateimmo-left-side .icon {
-	font-size: 50px;
+	font-size: 25px;
 }
 
 .ultimateimmo-right-side {
-	width: 75%;
+	width: 85%;
+	display: flex;
+	flex-direction: column;
 }
 
 .ultimateimmo-right-side .inner {
 	padding: 1% 3% 1% 3%;
 	color: #0c0c0c;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex: 1;
 }
 
 .ultimateimmo-right-side .line-info {
@@ -171,6 +183,22 @@ div.mainmenu.result {
 	padding: 1px 6px 1px 6px;
 	color: white;
 	border-radius: .25em;
+}
+
+.ultimateimmo-rounded-btn {
+	text-decoration: none !important;
+	margin-left: 10px;
+	flex-shrink: 0;
+}
+
+.ultimateimmo-rounded-btn:hover {
+	opacity: 0.8;
+}
+
+.ultimateimmo-title-section {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
 }
 
 .ultimateimmo-card-list {
