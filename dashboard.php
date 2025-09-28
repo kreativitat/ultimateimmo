@@ -63,7 +63,7 @@ $globalboxes = array();
 // Color theme : (#96BBBB, #F2E3BC, #618985, #C19875)
 
 if ($user->rights->ultimateimmo->read) {
-    $globalboxes[] = array('name' => $langs->trans('Proprietários'), 'color' =>'#C19875', 'icon' => 'fa-users',
+    $globalboxes[] = array('name' => $langs->trans('Proprietários'), 'color' =>'#C19875', 'icon' => 'fa-user',
         'url' => dol_buildpath('/ultimateimmo/owner/immowner_list.php', 1),
         'url_add' => dol_buildpath('/ultimateimmo/owner/immoowner_card.php?action=create', 1),
         'right' => $user->rights->ultimateimmo->read,
@@ -100,7 +100,7 @@ if ($user->rights->ultimateimmo->read) {
 }
 
 if ($user->rights->ultimateimmo->read) {
-    $globalboxes[] = array('name' => $langs->trans('INQUILINOS'), 'color' =>'#C19875', 'icon' => 'fa-user',
+    $globalboxes[] = array('name' => $langs->trans('INQUILINOS'), 'color' =>'#C19875', 'icon' => 'fa-users',
         'url' => dol_buildpath('/ultimateimmo/renter/immorenter_list.php', 1),
         'url_add' => dol_buildpath('/ultimateimmo/renter/immorenter_card.php?action=create', 1),
         'right' => $user->rights->ultimateimmo->read,
