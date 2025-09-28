@@ -165,7 +165,10 @@ $sql .= " , " . MAIN_DB_PREFIX . "ultimateimmo_building as ii";
 $sql .= " WHERE ic.date_start >= '" . $db->idate ( dol_get_first_day ( $y, 1, false ) ) . "'";
 $sql .= "  AND ic.date_start <= '" . $db->idate ( dol_get_last_day ( $y, 12, false ) ) . "'";
 $sql .= "  AND ic.fk_cost_type = it.rowid ";
-$sql .= "  AND it.rowid IN (".getDolGlobalString('ULTIMATEIMMO_TYPECOST_RENTER_PROPERTY').")";
+$typeCostRenterProperty = getDolGlobalString('ULTIMATEIMMO_TYPECOST_RENTER_PROPERTY');
+if (!empty($typeCostRenterProperty)) {
+	$sql .= "  AND it.rowid IN (".$typeCostRenterProperty.")";
+}
 $sql .= "  AND ic.fk_property = ll.rowid AND ll.fk_property = ii.fk_property ";
 $sql .= " GROUP BY  ii.label";
 
@@ -229,7 +232,10 @@ $sql .= " INNER JOIN " . MAIN_DB_PREFIX . "ultimateimmo_immorent as ir ON  ir.fk
 $sql .= " INNER JOIN " . MAIN_DB_PREFIX . "ultimateimmo_immorenter as irer ON ir.fk_renter = irer.rowid";
 $sql .= " WHERE ic.date_start >= '" . $db->idate ( dol_get_first_day ( $y, 1, false ) ) . "'";
 $sql .= "  AND ic.date_start <= '" . $db->idate ( dol_get_last_day ( $y, 12, false ) ) . "'";
-$sql .= "  AND it.rowid IN (".getDolGlobalString('ULTIMATEIMMO_TYPECOST_RENTER_RENTER').")";
+$typeCostRenterRenter = getDolGlobalString('ULTIMATEIMMO_TYPECOST_RENTER_RENTER');
+if (!empty($typeCostRenterRenter)) {
+	$sql .= "  AND it.rowid IN (".$typeCostRenterRenter.")";
+}
 $sql .= " GROUP BY irer.lastname";
 
 
@@ -297,7 +303,10 @@ $sql .= " , " . MAIN_DB_PREFIX . "ultimateimmo_building as ii";
 $sql .= " WHERE ic.date_start >= '" . $db->idate ( dol_get_first_day ( $y, 1, false ) ) . "'";
 $sql .= "  AND ic.date_start <= '" . $db->idate ( dol_get_last_day ( $y, 12, false ) ) . "'";
 $sql .= "  AND ic.fk_cost_type = it.rowid ";
-$sql .= "  AND it.rowid IN (".getDolGlobalString('ULTIMATEIMMO_TYPECOST_RENTER_PROPERTY').")";
+$typeCostRenterProperty2 = getDolGlobalString('ULTIMATEIMMO_TYPECOST_RENTER_PROPERTY');
+if (!empty($typeCostRenterProperty2)) {
+	$sql .= "  AND it.rowid IN (".$typeCostRenterProperty2.")";
+}
 $sql .= "  AND ic.fk_property = ll.rowid AND ll.fk_property = ii.fk_property ";
 $sql .= " GROUP BY  ii.label";
 

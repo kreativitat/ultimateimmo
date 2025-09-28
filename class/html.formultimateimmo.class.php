@@ -317,9 +317,9 @@ class FormUltimateimmo extends Form
 
 	public function selectYearImmoCost($selected = '', $htmlname = 'selectyearcost')
 	{
-		global $conf;
+		global $conf, $langs;
 		if (empty($conf->global->ULTIMATEIMMO_TYPECOST_ADJUST)) {
-			setEventMessage('Missing configuration TypeCostForAdjust','errors');
+			setEventMessage($langs->trans('MissingConfigurationTypeCostForAdjust'),'errors');
 		} else {
 			$dataYear=array();
 			$sql = 'SELECT DISTINCT YEAR(date_start) as yearcost FROM ' . MAIN_DB_PREFIX . 'ultimateimmo_immocost WHERE fk_cost_type IN (' . $conf->global->ULTIMATEIMMO_TYPECOST_ADJUST . ')';

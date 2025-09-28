@@ -106,8 +106,8 @@ class ImmoPayment extends CommonObject
 		'chequebank' => array('type' => 'varchar(50)', 'label' => 'ChequeBank', 'enabled' => 1, 'visible' => -1, 'position' => 87, 'notnull' => -1,),
 		'date_creation' => array('type' => 'datetime', 'label' => 'DateCreation', 'enabled' => 1, 'visible' => -2, 'position' => 500, 'notnull' => 1,),
 		'tms' => array('type' => 'timestamp', 'label' => 'DateModification', 'enabled' => 1, 'visible' => -2, 'position' => 501, 'notnull' => 1,),
-		'fk_user_creat' => array('type' => 'integer:User:user/class/user.class.php', 'label' => 'UserAuthor', 'enabled' => 1, 'visible' => -2, 'position' => 510, 'notnull' => 1, 'foreignkey' => 'llx_user.rowid',),
-		'fk_user_modif' => array('type' => 'integer:User:user/class/user.class.php', 'label' => 'UserModif', 'enabled' => 1, 'visible' => -2, 'position' => 511, 'notnull' => -1, 'foreignkey' => 'llx_user.rowid',),
+		'fk_user_creat' => array('type' => 'integer:User:user/class/user.class.php', 'label' => 'UserAuthor', 'enabled' => 1, 'visible' => -2, 'position' => 510, 'notnull' => 1, 'foreignkey' => 'user.rowid',),
+		'fk_user_modif' => array('type' => 'integer:User:user/class/user.class.php', 'label' => 'UserModif', 'enabled' => 1, 'visible' => -2, 'position' => 511, 'notnull' => -1, 'foreignkey' => 'user.rowid',),
 		'import_key' => array('type' => 'varchar(14)', 'label' => 'ImportId', 'enabled' => 1, 'visible' => -2, 'position' => 1000, 'notnull' => -1,),
 		'status' => array('type' => 'integer', 'label' => 'Status', 'enabled' => 1, 'visible' => 1, 'position' => 1000, 'notnull' => 1, 'index' => 1, 'arrayofkeyval' => array('0' => 'ImmoPaymentStatusDisabled', '1' => 'ImmoPaymentStatusActive', '-1' => 'Cancel')),
 	);
@@ -122,7 +122,7 @@ class ImmoPayment extends CommonObject
 	public $fk_renter;
 	public $note_public;
 	public $amount;			    // Total amount of payment
-	public $amounts=array();    // Array of amounts
+	public $amounts = array();    // Array of amounts
 	public $fk_mode_reglement;
 	public $fk_account;
 	public $fk_payment;
@@ -404,14 +404,14 @@ class ImmoPayment extends CommonObject
 			$sql = "INSERT INTO " . MAIN_DB_PREFIX . "ultimateimmo_immopayment (ref, fk_receipt, date_creation, date_payment, amount,";
 			$sql .= " fk_mode_reglement, fk_property, fk_renter, fk_rent, num_payment, note_public, fk_user_creat, fk_account, ";
 			$sql .= "fk_owner)";
-			$sql .= " VALUES ('".$this->ref."'," . $this->fk_receipt . ", '" . $this->db->idate($now) . "',";
+			$sql .= " VALUES ('" . $this->ref . "'," . $this->fk_receipt . ", '" . $this->db->idate($now) . "',";
 			$sql .= " '" . $this->db->idate($this->date_payment) . "',";
 			$sql .= " " . $totalamount . ",";
 			$sql .= " " . $this->fk_mode_reglement . ",'" . $this->db->escape($this->fk_property) . "','" .
 				$this->db->escape($this->fk_renter) . "','" . $this->db->escape($this->fk_rent) . "',  '" .
 				$this->db->escape($this->num_payment) . "', '" . $this->db->escape($this->note_public) . "', " . $user->id . ",";
 			$sql .= " 0,";
-			$sql .= isset($this->fk_owner)?(int)$this->fk_owner:'null';
+			$sql .= isset($this->fk_owner) ? (int)$this->fk_owner : 'null';
 			$sql .= ")";
 
 			dol_syslog(get_class($this) . "::create", LOG_DEBUG);
@@ -439,8 +439,8 @@ class ImmoPayment extends CommonObject
 			$this->db->commit();
 			return $this->id;
 		} else {
-			$this->error = "Error ".$this->db->lasterror();
-			$this->errors[] = "Error ".$this->db->lasterror();
+			$this->error = "Error " . $this->db->lasterror();
+			$this->errors[] = "Error " . $this->db->lasterror();
 			$this->db->rollback();
 			return -1;
 		}
@@ -468,43 +468,43 @@ class ImmoPayment extends CommonObject
 	public function createFromClone(User $user, $fromid)
 	{
 		global $hookmanager, $langs;
-	    $error = 0;
+		$error = 0;
 
-	    dol_syslog(__METHOD__, LOG_DEBUG);
+		dol_syslog(__METHOD__, LOG_DEBUG);
 
-	    $object = new self($this->db);
+		$object = new self($this->db);
 
-	    $this->db->begin();
+		$this->db->begin();
 
-	    // Load source object
-	    $object->fetchCommon($fromid);
-	    // Reset some properties
-	    unset($object->id);
-	    unset($object->fk_user_creat);
-	    unset($object->import_key);
+		// Load source object
+		$object->fetchCommon($fromid);
+		// Reset some properties
+		unset($object->id);
+		unset($object->fk_user_creat);
+		unset($object->import_key);
 
-	    // Clear fields
-	    $object->ref = "copy_of_".$object->ref;
-	    $object->title = $langs->trans("CopyOf")." ".$object->title;
-	    // ...
+		// Clear fields
+		$object->ref = "copy_of_" . $object->ref;
+		$object->title = $langs->trans("CopyOf") . " " . $object->title;
+		// ...
 
-	    // Create clone
+		// Create clone
 		$object->context['createfromclone'] = 'createfromclone';
-	    $result = $object->createCommon($user);
-	    if ($result < 0) {
-	        $error++;
-	        $this->error = $object->error;
-	        $this->errors = $object->errors;
-	    }
+		$result = $object->createCommon($user);
+		if ($result < 0) {
+			$error++;
+			$this->error = $object->error;
+			$this->errors = $object->errors;
+		}
 
-	    // End
-	    if (!$error) {
-	        $this->db->commit();
-	        return $object;
-	    } else {
-	        $this->db->rollback();
-	        return -1;
-	    }
+		// End
+		if (!$error) {
+			$this->db->commit();
+			return $object;
+		} else {
+			$this->db->rollback();
+			return -1;
+		}
 	}
 
 	/**
@@ -514,8 +514,8 @@ class ImmoPayment extends CommonObject
 	 */
 	private function get_field_list()
 	{
-	    $keys = array_keys($this->fields);
-	    return implode(',', $keys);
+		$keys = array_keys($this->fields);
+		return implode(',', $keys);
 	}
 
 	/**
@@ -525,39 +525,28 @@ class ImmoPayment extends CommonObject
 	 */
 	private function set_vars_by_db(&$obj)
 	{
-	    foreach ($this->fields as $field => $info)
-	    {
-	        if($this->isDate($info))
-	        {
-	            if(empty($obj->{$field}) || $obj->{$field} === '0000-00-00 00:00:00' || $obj->{$field} === '1000-01-01 00:00:00') $this->{$field} = 0;
-	            else $this->{$field} = strtotime($obj->{$field});
-	        }
-	        elseif($this->isArray($info))
-	        {
-	            $this->{$field} = @unserialize($obj->{$field});
-	            // Hack for data not in UTF8
-	            if($this->{$field } === FALSE) @unserialize(utf8_decode($obj->{$field}));
-	        }
-	        elseif($this->isInt($info))
-	        {
-	            $this->{$field} = (int) $obj->{$field};
-	        }
-	        elseif($this->isFloat($info))
-	        {
-	            $this->{$field} = (double) $obj->{$field};
-	        }
-	        /*elseif($this->isNull($info))
+		foreach ($this->fields as $field => $info) {
+			if ($this->isDate($info)) {
+				if (empty($obj->{$field}) || $obj->{$field} === '0000-00-00 00:00:00' || $obj->{$field} === '1000-01-01 00:00:00') $this->{$field} = 0;
+				else $this->{$field} = strtotime($obj->{$field});
+			} elseif ($this->isArray($info)) {
+				$this->{$field} = @unserialize($obj->{$field});
+				// Hack for data not in UTF8
+				if ($this->{$field} === FALSE) @unserialize(utf8_decode($obj->{$field}));
+			} elseif ($this->isInt($info)) {
+				$this->{$field} = (int) $obj->{$field};
+			} elseif ($this->isFloat($info)) {
+				$this->{$field} = (float) $obj->{$field};
+			}
+			/*elseif($this->isNull($info))
 	        {
 	            $val = $obj->{$field};
 	            // zero is not null
 	            $this->{$field} = (is_null($val) || (empty($val) && $val!==0 && $val!=='0') ? null : $val);
-	        }*/
-	        else
-	        {
-	            $this->{$field} = $obj->{$field};
-	        }
-
-	    }
+	        }*/ else {
+				$this->{$field} = $obj->{$field};
+			}
+		}
 	}
 
 	/**
@@ -629,15 +618,15 @@ class ImmoPayment extends CommonObject
 					return 0;
 				}
 			} else {
-				$this->error = "Error ".$this->db->lasterror();
-	            $this->errors[] = "Error ".$this->db->lasterror();
+				$this->error = "Error " . $this->db->lasterror();
+				$this->errors[] = "Error " . $this->db->lasterror();
 				$errmsg = $this->error;
 				setEventMessages($errmsg, null, 'errors');
 				return -1;
 			}
 		} else {
-			$this->error = "Error ".$this->db->lasterror();
-			$this->errors[] = "Error ".$this->db->lasterror();
+			$this->error = "Error " . $this->db->lasterror();
+			$this->errors[] = "Error " . $this->db->lasterror();
 			$errmsg = $this->error;
 			setEventMessages($errmsg, null, 'errors');
 			return -1;
@@ -789,9 +778,9 @@ class ImmoPayment extends CommonObject
 	 *
 	 *	@param	int		$withpicto					Include picto in link (0=No picto, 1=Include picto into link, 2=Only picto)
 	 *	@param	string	$option						On what the link point to ('nolink', ...)
-     *  @param	int  	$notooltip					1=Disable tooltip
-     *  @param  string  $morecss            		Add more css on link
-     *  @param  int     $save_lastsearch_value    	-1=Auto, 0=No save of lastsearch_values when clicking, 1=Save lastsearch_values whenclicking
+	 *  @param	int  	$notooltip					1=Disable tooltip
+	 *  @param  string  $morecss            		Add more css on link
+	 *  @param  int     $save_lastsearch_value    	-1=Auto, 0=No save of lastsearch_values when clicking, 1=Save lastsearch_values whenclicking
 	 *	@return	string								String with URL
 	 */
 	function getNomUrl($withpicto = 0, $option = '', $notooltip = 0, $morecss = '', $save_lastsearch_value = -1)
@@ -851,9 +840,9 @@ class ImmoPayment extends CommonObject
 	 *  @param	int		$mode          0=libelle long, 1=libelle court, 2=Picto + Libelle court, 3=Picto, 4=Picto + Libelle long, 5=Libelle court + Picto
 	 *  @return	string 			       Label of status
 	 */
-	function getLibStatut($mode=0)
+	function getLibStatut($mode = 0)
 	{
-		return $this->LibStatut($this->status,$mode);
+		return $this->LibStatut($this->status, $mode);
 	}
 
 	/**
@@ -944,18 +933,18 @@ class ImmoPayment extends CommonObject
 		}
 	}
 
-	 /**
-     *      Add record into bank for payment with links between this bank record and invoices of payment.
-     *      All payment properties must have been set first like after a call to create().
-     *
-     *      @param	User	$user               Object of user making payment
-     *      @param  string	$mode               'payment_quittance'
-     *      @param  string	$label              Label to use in bank record
-     *      @param  int		$accountid          Id of bank account to do link with
-     *      @param  string	$emetteur_nom       Name of transmitter
-     *      @param  string	$emetteur_banque    Name of bank
-     *      @return int                 		<0 if KO, >0 if OK
-     */
+	/**
+	 *      Add record into bank for payment with links between this bank record and invoices of payment.
+	 *      All payment properties must have been set first like after a call to create().
+	 *
+	 *      @param	User	$user               Object of user making payment
+	 *      @param  string	$mode               'payment_quittance'
+	 *      @param  string	$label              Label to use in bank record
+	 *      @param  int		$accountid          Id of bank account to do link with
+	 *      @param  string	$emetteur_nom       Name of transmitter
+	 *      @param  string	$emetteur_banque    Name of bank
+	 *      @return int                 		<0 if KO, >0 if OK
+	 */
 	public function addPaymentToBank($user, $mode, $label, $accountid, $emetteur_nom, $emetteur_banque)
 	{
 		global $conf;
@@ -971,7 +960,7 @@ class ImmoPayment extends CommonObject
 			$total = $this->amount;
 			if ($mode == 'immopayment') $amount = $total;
 
-			// Insert payment into llx_bank
+			// Insert payment into bank
 			$bank_line_id = $acc->addline(
 				$this->date_payment,
 				$this->fk_mode_reglement,  // Payment mode id or code ("CHQ or VIR for example")
@@ -984,7 +973,7 @@ class ImmoPayment extends CommonObject
 				$emetteur_banque
 			);
 
-			// Update fk_account in llx_paiement.
+			// Update fk_account in paiement.
 			// On connait ainsi le paiement qui a genere l'ecriture bancaire
 			if ($bank_line_id > 0) {
 				$result = $this->update_fk_bank($bank_line_id);
@@ -1018,7 +1007,7 @@ class ImmoPayment extends CommonObject
 	}
 
 	/**
-	 *  Update link between the quittance payment and the generated line in llx_bank
+	 *  Update link between the quittance payment and the generated line in bank
 	 *
 	 *  @param	int		$id_bank         Id if bank
 	 *  @return	int			             >0 if OK, <=0 if KO
@@ -1033,8 +1022,8 @@ class ImmoPayment extends CommonObject
 		if ($result) {
 			return 1;
 		} else {
-			$this->error = "Error ".$this->db->lasterror();
-			$this->errors[] = "Error ".$this->db->lasterror();
+			$this->error = "Error " . $this->db->lasterror();
+			$this->errors[] = "Error " . $this->db->lasterror();
 			return 0;
 		}
 	}
@@ -1047,36 +1036,30 @@ class ImmoPayment extends CommonObject
 	 */
 	public function setPaymentMethods($id)
 	{
-		dol_syslog(get_class($this).'::setPaymentMethods('.$id.')');
-		if ($this->statut >= 0 || $this->element == 'societe')
-		{
+		dol_syslog(get_class($this) . '::setPaymentMethods(' . $id . ')');
+		if ($this->statut >= 0 || $this->element == 'societe') {
 			// TODO uniformize field name
 			$fieldname = 'fk_mode_reglement';
 			if ($this->element == 'societe') $fieldname = 'mode_reglement';
 			if (get_class($this) == 'Fournisseur') $fieldname = 'mode_reglement_supplier';
 
-			$sql = 'UPDATE '.MAIN_DB_PREFIX.$this->table_element;
-			$sql .= ' SET '.$fieldname.' = '.(($id > 0 || $id == '0') ? $id : 'NULL');
-			$sql .= ' WHERE rowid='.$this->id;
+			$sql = 'UPDATE ' . MAIN_DB_PREFIX . $this->table_element;
+			$sql .= ' SET ' . $fieldname . ' = ' . (($id > 0 || $id == '0') ? $id : 'NULL');
+			$sql .= ' WHERE rowid=' . $this->id;
 
-			if ($this->db->query($sql))
-			{
+			if ($this->db->query($sql)) {
 				$this->mode_reglement_id = $id;
 				// for supplier
 				if (get_class($this) == 'Fournisseur') $this->mode_reglement_supplier_id = $id;
 				return 1;
-			}
-			else
-			{
-				dol_syslog(get_class($this).'::setPaymentMethods Erreur '.$sql.' - '.$this->db->error());
-				$this->error=$this->db->error();
+			} else {
+				dol_syslog(get_class($this) . '::setPaymentMethods Erreur ' . $sql . ' - ' . $this->db->error());
+				$this->error = $this->db->error();
 				return -1;
 			}
-		}
-		else
-		{
-			dol_syslog(get_class($this).'::setPaymentMethods, status of the object is incompatible');
-			$this->error='Status of the object is incompatible '.$this->statut;
+		} else {
+			dol_syslog(get_class($this) . '::setPaymentMethods, status of the object is incompatible');
+			$this->error = 'Status of the object is incompatible ' . $this->statut;
 			return -2;
 		}
 	}
@@ -1105,11 +1088,11 @@ class ImmoPayment extends CommonObject
 		$sql .= " , " . MAIN_DB_PREFIX . "ultimateimmo_immoreceipt as lo ";
 		$sql .= "WHERE ip.fk_renter = lc.rowid AND ip.fk_property = ll.rowid AND ip.fk_receipt = lo.rowid AND lo.rowid = " . $id;
 
-		dol_syslog ( get_class ( $this ) . "::fetch_by_loyer sql=" . $sql );
-		$resql = $this->db->query ( $sql );
+		dol_syslog(get_class($this) . "::fetch_by_loyer sql=" . $sql);
+		$resql = $this->db->query($sql);
 		if ($resql) {
-			if ($this->db->num_rows ( $resql )) {
-				$obj = $this->db->fetch_object ( $resql );
+			if ($this->db->num_rows($resql)) {
+				$obj = $this->db->fetch_object($resql);
 
 				$this->id = $obj->reference;
 				$this->ref = $obj->reference;
@@ -1120,7 +1103,7 @@ class ImmoPayment extends CommonObject
 				$this->nomlocataire = $obj->nomlocataire;
 				$this->amount = $obj->amount;
 				$this->note_public = $obj->note_public;
-				$this->date_payment = $this->db->jdate ( $obj->date_payment );
+				$this->date_payment = $this->db->jdate($obj->date_payment);
 				$this->fk_receipt = $obj->fk_receipt;
 				$this->nomloyer = $obj->nomloyer;
 				$this->fk_owner = $obj->fk_owner;
@@ -1129,10 +1112,10 @@ class ImmoPayment extends CommonObject
 			} else {
 				return 0;
 			}
-			$this->db->free ( $resql );
+			$this->db->free($resql);
 		} else {
-			$this->error = $this->db->error ();
-			return - 1;
+			$this->error = $this->db->error();
+			return -1;
 		}
 	}
 
@@ -1152,7 +1135,7 @@ class ImmoPayment extends CommonObject
 
 		$error = 0;
 		$this->output = '';
-		$this->error='';
+		$this->error = '';
 
 		dol_syslog(__METHOD__, LOG_DEBUG);
 
@@ -1179,13 +1162,13 @@ class ImmoPayment extends CommonObject
 	 */
 	public function generateDocument($modele, $outputlangs, $hidedetails = 0, $hidedesc = 0, $hideref = 0)
 	{
-		global $conf,$langs;
+		global $conf, $langs;
 
 		$langs->load("ultimateimmo@ultimateimmo");
 
 		if (empty($modele)) {
-			$this->error='PDFModelMissing';
-			$this->errors[]='PDFModelMissing';
+			$this->error = 'PDFModelMissing';
+			$this->errors[] = 'PDFModelMissing';
 			return -1;
 		}
 
@@ -1195,52 +1178,52 @@ class ImmoPayment extends CommonObject
 	}
 }
 
-	/**
-	 * Load object lines in memory from the database
-	 *
-	 * @return int         <0 if KO, 0 if not found, >0 if OK
-	 */
+/**
+ * Load object lines in memory from the database
+ *
+ * @return int         <0 if KO, 0 if not found, >0 if OK
+ */
 
-	class ImmoPaymentLine
-	{
-		/**
-		 * @var int rowID
-		 */
-		public $rowid;
-		/**
-		 * @var int fk_rent
-		 */
-		public $fk_rent;
-		/**
-		 * @var int fk_property
-		 */
-		public $fk_property;
-		/**
-		 * @var int fk_renter
-		 */
-		public $fk_renter;
-		/**
-		 * @var int amount
-		 */
-		public $amount;
-		/**
-		 * @var int fk_mode_reglement
-		 */
-		public $fk_mode_reglement;
-		/**
-		 * @var int note_public
-		 */
-		public $note_public;
-		/**
-		 * @var int date_payment
-		 */
-		public $date_payment = '';
-		/**
-		 * @var int fk_owner
-		 */
-		public $fk_owner;
-		/**
-		 * @var int fk_receipt
-		 */
-		public $fk_receipt;
-	}
+class ImmoPaymentLine
+{
+	/**
+	 * @var int rowID
+	 */
+	public $rowid;
+	/**
+	 * @var int fk_rent
+	 */
+	public $fk_rent;
+	/**
+	 * @var int fk_property
+	 */
+	public $fk_property;
+	/**
+	 * @var int fk_renter
+	 */
+	public $fk_renter;
+	/**
+	 * @var int amount
+	 */
+	public $amount;
+	/**
+	 * @var int fk_mode_reglement
+	 */
+	public $fk_mode_reglement;
+	/**
+	 * @var int note_public
+	 */
+	public $note_public;
+	/**
+	 * @var int date_payment
+	 */
+	public $date_payment = '';
+	/**
+	 * @var int fk_owner
+	 */
+	public $fk_owner;
+	/**
+	 * @var int fk_receipt
+	 */
+	public $fk_receipt;
+}

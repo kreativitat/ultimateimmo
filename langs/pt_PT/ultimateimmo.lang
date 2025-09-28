@@ -1,0 +1,461 @@
+# Copyright (C) 2018-2021 Philippe GRAND <philippe.grand@atoo-net.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#
+# Generic
+#
+
+# Module label 'ModuleUltimateimmoName'
+ModuleUltimateimmoName = Ultimateimmo
+# Module description 'ModuleUltimateimmoDesc'
+ModuleUltimateimmoDesc = Solução para profissionais imobiliários
+
+#
+# Admin page
+#
+UltimateimmoSetup = Configuração Ultimateimmo
+Settings = Configurações
+UltimateimmoSetupPage = Página de configuração Ultimateimmo
+UltimateimmoNumberingModeles = Modelo de numeração para recibo.
+TemplatePDFUltimateimmo = Modelo para recibo
+WatermarkOnDraftImmoCards = Marca d'água em recibos rascunho (nenhuma se vazio)
+PublicSite=Site público
+EnablePublicSite = Ativar o site publicamente acessível
+PublicSiteDesc = O Dolibarr pode oferecer uma URL de página pública para exibir um site que lista anúncios imobiliários para visitantes externos.
+ULTIMATEIMMO_USE_GOOGLE = Usar Google com o módulo UltimateImmo
+GoogleZoomLevel = Nível de zoom padrão (1 a 10)
+GOOGLE_API_SERVERKEY=Chave API (do tipo "Chave do servidor")
+ParametersForGoogleAPIv3Usage=Para Google API %s V3
+KeepEmptyYoUsePublicQuotaOfAPI=Deixe vazio para usar a quota pública desta API (caso contrário, a chave pode ser criada na página https://code.google.com/apis/console/, "Acesso API" para criar uma "Chave do servidor" e "Serviços" para ativar API "%s")
+AllowGoogleToLoginWithKey=Para usar as quotas da sua própria conta Google, deve criar uma chave na página <a href="%s" target="_blank">%s</a>, menu "API & Autenticação" -> "Identificação". Clique em "Criar uma chave" e escolha "Chave do servidor" depois "Criar". Obterá a sua chave do servidor.
+UltimateimmoEnablePublicInterface = Uma interface pública que não requer identificação está disponível no seguinte url
+UltimateimmoPublicAccess = Ativar interface pública
+UltimateimmoEmailMustExist = Exigir um endereço de email existente para criar um ticket
+UltimateimmoEmailMustExistHelp = Na interface pública, o endereço de email já deve estar preenchido na base de dados para criar um novo ticket.
+UltimateimmoShowCompanyLogo = Exibir o logótipo da empresa na interface pública
+UltimateimmoShowCompanyLogoHelp = Ative esta opção para ocultar o logótipo da empresa principal nas páginas da interface pública
+UltimateimmoPublicInterfaceForbidden = A interface pública para tickets não foi ativada
+EnumerationOfPartsAndCommonEquipment=Enumeração de partes e equipamentos comuns.
+UltimateImmoEquipementGardiennage=vigilância
+UltimateImmoEquipementInterphone=Intercomunicador
+UltimateImmoEquipementAscenseur=Elevador
+UltimateImmoEquipementVideOrdures=Eliminação de Lixo
+UltimateImmoEquipementAntenneTVcollective=Antena de TV coletiva
+UltimateImmoEquipementEspacesverts=Espaços verdes
+UltimateImmoEquipementChauffageCollectif=Aquecimento comunitário
+UltimateImmoEquipementEauChaudeCollective=Água quente coletiva
+
+#
+# Menu
+#
+ImmoProperties = Propriedades
+MenuImmoProperty = Imobiliário
+MenuNewImmoProperty = Novo imóvel
+MenuListImmoProperty = Lista
+MenuImmoPropertyType = Tipo de imóvel
+MenuNewImmoPropertyType = Novo tipo
+MenuListImmoPropertyType = Lista
+MenuImmoRent = Arrendamentos
+MenuNewImmoRent = Novo arrendamento
+MenuListImmoRent = Lista
+MenuImmoOwner = Proprietários
+MenuNewImmoOwner = Novo Proprietário
+MenuListImmoOwner = Lista
+MenuImmoOwnerType = Tipo de Proprietário
+MenuNewImmoOwnerType = Novo Tipo de Proprietário
+MenuListImmoOwnerType = Lista
+MenuImmoRenter = Inquilinos
+MenuNewImmoRenter = Novo Inquilino
+MenuListImmoRenter = Lista
+MenuImmoRenterStats = Estatísticas
+MenuImmoPayment = Pagamento
+MenuNewImmoPayment = Novo Pagamento
+MenuListImmoPayment = Pagamentos
+MenuListImmoPaymentStats = Estatísticas de pagamento
+MenuListImmoReceipt = Recibos
+MenuNewImmoReceipt = Novo recibo
+MenuAllReceiptperContract = Gerar os recibos
+MenuValidateReceipt = Validar os pagamentos
+MenuListImmoReceiptStats = Estatísticas de Recibos
+MenuListImmoCost = Encargos de arrendamento
+MenuNewImmoCost = Novo encargo de arrendamento
+MenuRenterCost = Custo do Inquilino
+MenuStatisticsCost = Custo: Estatísticas
+MenuStatisticsResult = Resultados: Estatísticas
+MenuListImmoCostType = Tipo de custo
+MenuNewImmoCostType = Novo tipo de custo
+MenuSpreadCharges = Repartição de Encargos
+YearOfCommonCostToAdjust = Ano de repartição dos encargos
+
+#
+# About page
+#
+About = Acerca
+UltimateimmoAbout = Acerca do Ultimateimmo
+UltimateimmoAboutPage = Página acerca do Ultimateimmo
+
+#
+# Dictionnaries
+#
+DiagnosticImmo = Diagnósticos Imobiliários
+ImmoProperty_Type = Tipo de Propriedade
+BuiltDate = Data de construção
+
+#
+# Real Estate
+#
+# Real Estate
+ImmoPropertyLabelInfo = Introduza uma etiqueta
+APA = Apartamento
+HOU = Casa individual
+LOC = Estabelecimento comercial
+SHO = Loja
+GAR = Garagem
+BUL = Edifício
+ImmoPropertyTypeInfo = Tipo de propriedade criado no dicionário
+PropertyParent = Propriedade principal
+Juridique = Estado legal da propriedade
+MonoPropriete = Propriedade de proprietário único
+Copropriete = Propriedade conjunta
+DateBuilt = Período de construção
+DateBuilt1 = antes de 1949
+DateBuilt2 = de 1949 a 1974
+DateBuilt3 = de 1975 a 1989
+DateBuilt4 = de 1989 a 2005
+DateBuilt5 = desde 2005
+ImmoPropertyDateBuiltInfo = Período de construção criado no dicionário
+Target = Objetivo
+Building = Edifício
+Staircase = Escada
+NumFloor = Número do Andar
+NumFlat = Número do Apartamento
+NumDoor = Porta n°
+Area = Área de superfície
+NumberOfRoom = Número de quartos
+ObligationsOfTheSeller = Obrigações do vendedor
+TheTechnicalDiagnosticFileDDT = O ficheiro de diagnóstico técnico (DDT)
+UltimateImmoDiagnosticElectricityInstallation = O estado da instalação elétrica interna
+UltimateImmoDiagnosticGasInstallation = O estado da instalação de gás "natural" interior
+UltimateImmoDiagnosticLeadExposure = O risco de exposição ao chumbo (CREP)
+UltimateImmoDiagnosticContainingAsbestos = O estado que menciona a presença ou ausência de materiais ou produtos contendo amianto
+UltimateImmoDiagnosticContainingTermites = estado relativo à presença de térmitas no edifício
+UltimateImmoDiagnosticNaturalTechnologicalRisks = o estado dos riscos naturais e tecnológicos
+UltimateImmoDiagnosticNonCollectiveSanitationFacilities = estado das instalações sanitárias não coletivas
+UltimateImmoDiagnosticEnergyPerformanceDiagnosis = diagnóstico de desempenho energético do edifício (DPE)
+ObligationsOfTheLessor = Obrigações do locador
+DeleteImmoProperty = Eliminar propriedade
+ConfirmDeleteImmoProperty = Tem a certeza de que deseja eliminar esta propriedade?
+CloneImmoProperty = Clonar propriedade
+ConfirmCloneImmoProperty = Tem a certeza de que deseja clonar esta propriedade?
+# Fiscal lots
+MenuImmoLotFiscal = Lotes fiscais
+MenuListImmoLotFiscal = Listar Lotes Fiscais
+immobuildings = edifícios
+ImmoBuilding = Edifício
+DeleteImmoBuilding = Eliminar edifício
+ConfirmDeleteImmoBuilding = Tem a certeza de que deseja eliminar este edifício?
+CloneImmoBuilding = Clonar edifício
+# Counters
+MenuImmoCompteur = Contadores
+MenuNewImmoCompteur = Novo Contador
+MenuImmoCompteurList = Listar Contadores
+MenuImmoCompteurStats = Estatísticas de Contadores
+MenuImmoCompteurStatsYear = Estatísticas de Contadores por Ano
+MenuImmoCompteurCost = Custo dos Contadores
+ImmoCompteur = contador
+ImmoCompteurs = contadores
+ImmoCompteurType = Tipo de contador
+ImmoCompteurTypeInfo = Tipo de contador (água, gás, outros...) criado no dicionário
+ImmoCompteurDateStatement = Data de Leitura
+ImmoCompteurStatement = Leitura
+ImmoCompteurStatementInfo = Introduza a leitura do contador (para água, outros...)
+ImmoCompteurNbDays = Nº Dias
+ImmoCompteurConsumption = Consumo
+ImmoCompteurDailyConsumption = Consumo Diário
+ImmoCompteurMonthlyConsumption = Consumo Mensal
+ImmoCompteurYearlyConsumption = Consumo Anual
+DeleteImmoCompteur = Eliminar contador
+CloneImmoCompteur = Clonar contador
+
+#
+# Owners
+#
+ImmoOwner = Proprietário
+ImmoOwner_TypeInfo = Introduza o tipo de proprietário (Empresa, outros...)
+DeleteImmoOwner = Eliminar proprietário
+ConfirmDeleteImmoOwner = Tem a certeza de que deseja eliminar este proprietário?
+ImmoOwner_Type = Tipo de proprietário
+CloneImmoOwner = Clonar proprietário
+ConfirmCloneImmoOwner = Tem a certeza de que deseja clonar este proprietário?
+ImmoOwnerStatusActive = Proprietário Ativo
+ImmoOwnerStatusDisabled = Proprietário Desativado
+
+# Rents
+#
+ImmoRents = Arrendamentos
+ImmoRent = Arrendamento
+ListOfRents = Lista de arrendamentos
+ImmorentType = Tipo de arrendamento
+EmptyHousing = Habitação Vazia
+FurnishedApartment = Apartamento Mobilado
+RentAmount = Valor do arrendamento
+Deposit = Depósito
+Encours = Em curso
+ImmoRentPeriod = Período
+ImmoRentPeriodInfo = Frequência de vencimento do arrendamento (mensal, semanal, anual...)
+ImmoRentNoticePeriod = Período de aviso
+DateStartRent = Data de Início do Arrendamento
+date_end = Data de fim
+DateNextRent = Data do próximo arrendamento
+DateLastRegul = Data da última regularização
+DeleteImmoRent = Eliminar arrendamento
+ConfirmDeleteImmoRent = Tem a certeza de que deseja eliminar este arrendamento?
+CloneImmoRent = Clonar arrendamento
+ConfirmCloneImmoRent = Tem a certeza de que deseja clonar este arrendamento?
+ImmoRentStatusActive = Arrendamento Ativo
+ImmoRentStatusDisabled = Arrendamento Desativado
+
+#
+# Renters
+#
+ImmoRenter = Inquilino
+ImmoCountry = País
+DeleteImmoRenter = Eliminar inquilino
+ConfirmCloneImmoRenter = Tem a certeza de que deseja clonar este inquilino?
+CloneImmoRenter = Clonar inquilino
+ConfirmDeleteImmoRenter = Tem a certeza de que deseja eliminar este inquilino?
+ImmoRenterStatusActive = Inquilino Ativo
+ImmoRenterStatusDisabled = Inquilino Desativado
+Bilan = Balanço
+
+#
+# Receipts
+#
+# Receipts
+OtherReceipts = Outros Recibos
+ImmoPaymentLabelInfo = Introduza uma etiqueta
+ImmoPaymentRentAmountInfo = Introduza o valor do arrendamento
+ImmoPaymentChargeAmountInfo = Introduza o valor dos encargos
+ImmoPaymentTotalAmountInfo = Introduza o valor total
+ChargesAmount = Valor dos encargos
+TotalAmount = Valor total
+VatAmount = Valor do IVA
+VatTx = Taxa de IVA
+DeleteImmoReceipt = Eliminar recibo
+ConfirmDeleteImmoReceipt = Tem a certeza de que deseja eliminar este recibo?
+CloneImmoReceipt = Clonar este Recibo
+ConfirmCloneImmoReceipt = Tem a certeza de que deseja clonar este recibo?
+Echeance = Prazo
+Periode_du = Período de
+Periode_au = Período até
+ImmoReceiptStatTitre= Arrendamentos
+Quittance = Recibo
+ImmoReceiptStatusDisabled = Recibo desativado
+ImmoReceiptStatusActive = Recibo ativado
+# Payment
+CreatePDF = Criar PDF
+Property = Propriedade
+ImmoPaymentStatusDisabled = A ser pago
+ImmoPaymentStatusActive = Pago
+ImmoPaymentTitle = Resultado
+ImmoPaymentReceiptInfo = Recibo ligado a este pagamento
+ImmoPaymentAmountInfo = Valor pago pelo inquilino
+ImmoPaymentTypeInfo = Tipo de pagamento usado pelo inquilino
+NumPayment = <em>Número(Cheque/Transferência N°)</em>
+CheckTransmitter = <em>Emissor(Cheque/Transferência N°)</em>
+ChequeBank = <em>Banco(Banco do cheque)</em>
+ImmoPaymentIncome = Rendimento
+ImmoPaymentRentUpdate = Arrendamento é atualizado
+DeleteImmoPayment = Eliminar pagamento
+ConfirmDeleteImmoPayment = Tem a certeza de que deseja eliminar este pagamento?
+ImmomPaiementResultat = Resultado
+# Rental
+MenuStatisticsCostFourn = Custo: Estatísticas por Fornecedor
+ImmoCostRepartition = Dividir Custos
+ImmoCostLabelInfo = Introduza uma etiqueta
+ImmoCostAmountInfo = Introduza o valor total com IVA incluído
+ImmoCostAmountExTaxInfo = Introduza um valor sem IVA
+ImmoCostAmountTaxInfo = Introduza o valor do IVA
+RenterCost = Custos por inquilino
+ImmoCostPaiementChargelocataire = Pagamento de custo do inquilino
+ImmoCostChargesReelLocataire = Custos reais do inquilino
+ImmoCostDifferentielCharge = Diferencial de custo
+CostStatsTitle = Custos
+ImmoResultResultat = Resultado
+ImmoResultResultatImmo = Resultado imobiliário
+ImmoResultLoyerBrutEncaisse = Renda bruta recebida
+ImmoResultChargesDeductibles = Encargos dedutíveis
+ImmoResultRevenuFiscal = Rendimento fiscal
+ImmoResultChargesNonDeductibles = Encargos não dedutíveis
+ImmoResultRevenuNet= Rendimento Líquido
+Average = Média
+# Cost Types
+ImmoCost_Type = Tipo de custo
+ImmoCostType = Tipos de custo
+TitreEditImmoCost = Editar custo
+CostTypeLabel = Etiqueta
+CostTypeLabelInfo = Introduza um tipo de custo
+CostTypeFamille = Tipo de custo
+CostTypeFamilleInfo = Introduza um grupo de custo
+DeleteImmoCost = Eliminar custo
+ConfirmDeleteImmoCost = Tem a certeza de que deseja eliminar este custo?
+CloneImmoCost = Clonar custo
+ImmoCostVentilNameProperty = Nome da propriedade
+ImmoCostVentilAmount = Valor
+ImmoCostVentilSelect = Selecionar
+ImmoCostVentilAddRepartition = DIVIDIR CUSTOS
+DeleteImmoCost_Type = Eliminar tipo de custo
+ConfirmDeleteImmoCost_Type = Tem a certeza de que deseja eliminar este tipo de custo?
+ImmoCostStatusActive = Custo Ativo
+ImmoCostStatusDisabled = Custo Desativado
+
+#
+# Miscellaneous
+#
+BienPrincipal = Propriedade principal
+BirthDay = Data de nascimento
+BirthCountry = País de nascimento
+ImmoProperty = Propriedade
+Properties = Propriedades
+ImmoProperties = Propriedades
+ImmoRenters = Inquilinos
+ImmoCost = Recibo
+ImmoCosts = Encargos de arrendamento
+ImmoReceipts = Recibos
+ImmoReceipt = Recibo
+ImmoPayments = Pagamentos
+ImmoPayment = Pagamento
+UnPaidReceipt = Recibo não pago
+PaidReceipt = Recibo pago
+PartiallyPaidReceipt = Recibo parcialmente pago
+TypePayment = Tipo de pagamento
+NewImmoPropertyType = Novo Tipo de Propriedade
+PropertyTypeStatusActive=Ativo
+PropertyTypeStatusCancel=Cancelar
+Civility = Título
+Renter = Inquilino
+ImmoUnpaid = Não pago
+ImmoPaid = Pago
+PartialPayment = Pagamento Parcial
+NomLoyer = Nome do arrendamento
+OtherProperties = Outras propriedades
+OwnerName = Nome do Proprietário
+RenterName = Nome do Inquilino
+RefOwner = Referência do proprietário
+SendImmoReceiptRef = Submissão do recibo %s
+ConfirmValidateReceipt = Confirma a validação do recibo %s
+ReceiptPaymentsAdded = Pagamentos de recibo adicionados
+Nomlocal = Nome da propriedade
+Paye = Recibo pago
+ValidateReceipt = Validar recibo
+ShowMandataireDetails = Ver detalhes do agente
+ShowColocataireDetails = Ver detalhes do colega de quarto
+Quittances&Baux = Recibos e Arrendamentos
+OtherRents = Outros Arrendamentos
+NumberReceiptByMonth  = Número de recibos por mês
+CustomerReceiptPayment = Pagamento de recibo do cliente
+Societe = Empresa
+Appartement = Apartamento
+
+#
+# Sample page
+#
+MyPageName = Nome da minha página
+
+#
+# Sample widget
+#
+MyWidget = O meu widget
+MyWidgetDescription = Descrição do meu widget
+
+# Menu
+MenuDictionarie=Dicionário
+DictionaryDescExtra=Dicionário
+
+# Objects
+ImmoIndice=Índice
+
+# Extra Fields
+ExtraFieldsProperty = Campos Extra (Propriedades)
+ExtraFieldsRenter = Campos Extra (Inquilinos)
+ExtraFieldsOwner = Campos Extra (Proprietários)
+ExtraFieldsPayment = Campos Extra (Pagamentos)
+ExtraFieldsReceipt = Campos Extra (Recibos)
+ExtraFieldsRent = Campos Extra (Arrendamentos)
+
+# Admin translations
+Configuration=Configuração
+etatpaiement=Estado do Pagamento
+FreeLegalTextOnReceipts=Texto legal livre nos recibos
+TypeCostForAdjust=Ajuste de custos
+TypeCostForRenterProperty=Tipo de custo de propriedade aluguel (relatório de custos do inquilino)
+TypeCostForRenterRenter=Tipo de custo do inquilino (relatório de custos do inquilino)
+MandataireRepresentation=Se aplicável, representado pelo agente
+
+# Property translations
+LotFiscal=Lote fiscal
+GoogleMapsAddressNotFound=Endereço não encontrado no Google Maps
+
+# Property field labels
+UISectioncadastrale=Seção cadastral
+UIParcellecadastrale=Parcela cadastral
+UINumPrmEdf=Número PRM EDF
+UINumLigneNet=Número da linha de internet
+
+# Meter readings
+ImmoCompteurDtFirst=Data da primeira leitura
+ImmoCompteurDtFirstValue=Valor do contador na primeira leitura
+ImmoCompteurDtLast=Data da última leitura
+ImmoCompteurDtLastValue=Valor do contador na última leitura
+ImmoCompteurDiff=Diferença do contador entre primeira e última
+ImmoCompteurDtDiff=Número de dias entre primeira e última leitura
+
+# Meter costs interface
+ListOfImmoCompteurCosts=Lista de Custos de Contadores
+TechnicalID=ID Técnico
+Year=Ano
+Amount=Montante
+Status=Estado
+ImmoCompteur_Costs=Custos de Contadores
+MyFilter=Meu Filtro
+CompteurType=Tipo de Contador
+UIIndiceX=Índice %d
+UICalcIndice=Novo Aluguel será (Aluguel atual * índice 1) / índice 2
+UIRevalIndice=Reavaliação de Índice
+DateLastRegulCharge=Data último ajuste de encargos
+Payed=Pago
+ImmoCostChargesReelLocataireProperty=Encargos reais do inquilino por propriedade
+ImmoCostChargesReelLocataireRenter=Encargos reais do inquilino por inquilino
+ImmoSpreadCost=Distribuição de custos
+OwnerLastName=Sobrenome do proprietário
+OwnerFirstName=Nome do proprietário
+MissingConfigurationTypeCostForAdjust=Configuração TypeCostForAdjust em falta
+ImmoReceipts=Recibos
+MenuNewImmoReceipt=Novo Recibo
+
+# Dashboard translations
+UltimateImmoDashboard=Painel UltimateImmo
+Proprietários=Proprietários
+MenuImmoActiveOwner=Proprietários Ativos
+MenuImmoNotActiveOwner=Proprietários Inativos
+IMOBILIÁRIO=IMOBILIÁRIO
+ImmoActiveProperties=Propriedades Ativas
+ImmoNotActiveProperties=Propriedades Inativas
+ARRENDAMENTOS=ARRENDAMENTOS
+MenuImmoActiveRent=Arrendamentos Ativos
+MenuImmoNotActiveRent=Arrendamentos Inativos
+INQUILINOS=INQUILINOS
+MenuImmoActiveRenter=Inquilinos Ativos
+MenuImmoNotActiveRenter=Inquilinos Inativos

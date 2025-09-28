@@ -78,7 +78,7 @@ class modUltimateimmo extends DolibarrModules
 
 		// Possible values for version are: 'development', 'experimental', 'dolibarr', 'dolibarr_deprecated' or a version string like 'x.y.z'
 		$this->version = '19.0.0';
-		// Key used in llx_const table to save module status enabled/disabled (where ULTIMATEIMMO is value of property name of module in uppercase)
+		// Key used in const table to save module status enabled/disabled (where ULTIMATEIMMO is value of property name of module in uppercase)
 		$this->const_name = 'MAIN_MODULE_' . strtoupper($this->name);
 		// Name of image file used for this module.
 		// If file is in theme/yourtheme/img directory under name object_pictovalue.png, use this->picto='pictovalue'
@@ -90,8 +90,8 @@ class modUltimateimmo extends DolibarrModules
 		// for specific path of parts (eg: /ultimateimmo/core/modules/barcode)
 		// for specific css file (eg: /ultimateimmo/css/ultimateimmo.css.php)
 		$this->module_parts = array(
-			'triggers' => 1,// Set this to 1 if module has its own trigger directory (core/triggers)
-			'login' => 0,// Set this to 1 if module has its own login method file (core/login)
+			'triggers' => 1, // Set this to 1 if module has its own trigger directory (core/triggers)
+			'login' => 0, // Set this to 1 if module has its own login method file (core/login)
 			'substitutions' => 1,
 			// Set this to 1 if module has its own substitution function file (core/substitutions)
 			'menus' => 0,
@@ -108,13 +108,30 @@ class modUltimateimmo extends DolibarrModules
 			// Set this to relative path of css file if module has its own css file
 			'js' => array('/ultimateimmo/js/ultimateimmo.js.php'),
 			// Set this to relative path of js file if module must load a js on all pages
-			'hooks' => array('data' => array('leftblock','index', 'searchform', 'thirdpartycard', 'commcard',
-				'categorycard', 'contactcard', 'actioncard', 'agendathirdparty',
-				'projectthirdparty',
-				'infothirdparty', 'thirdpartybancard', 'consumptionthirdparty',
-				'thirdpartynotification', 'thirdpartymargins',
-				'thirdpartycustomerprice', 'searchform', 'globalcard','elementproperties'),
-				'entity' => '0')
+			'hooks' => array(
+				'data' => array(
+					'leftblock',
+					'index',
+					'searchform',
+					'thirdpartycard',
+					'commcard',
+					'categorycard',
+					'contactcard',
+					'actioncard',
+					'agendathirdparty',
+					'projectthirdparty',
+					'infothirdparty',
+					'thirdpartybancard',
+					'consumptionthirdparty',
+					'thirdpartynotification',
+					'thirdpartymargins',
+					'thirdpartycustomerprice',
+					'searchform',
+					'globalcard',
+					'elementproperties'
+				),
+				'entity' => '0'
+			)
 			// Set here all hooks context managed by module. To find available hook context, make a "grep -r '>initHooks(' *" on source code. You can also set hook context 'all'
 		);
 
@@ -138,8 +155,10 @@ class modUltimateimmo extends DolibarrModules
 
 		// Dependencies
 		$this->hidden = false;            // A condition to hide module
-		$this->depends = array("modSociete",
-			"modBanque");        // List of module class names as string that must be enabled if this module is enabled
+		$this->depends = array(
+			"modSociete",
+			"modBanque"
+		);        // List of module class names as string that must be enabled if this module is enabled
 		$this->requiredby = array();    // List of module ids to disable if this one is disabled
 		$this->conflictwith = array();    // List of module class names as string this module is in conflict with
 		$this->langfiles = array("ultimateimmo@ultimateimmo");
@@ -248,19 +267,54 @@ class modUltimateimmo extends DolibarrModules
 				'SELECT t.rowid, t.date_start, t.date_end, t.type_indice,t.amount, t.active FROM ' . MAIN_DB_PREFIX . 'ultimateimmo_immoindice as t'
 			),
 			'tabsqlsort' => array(
-				"label ASC", "label ASC", "label ASC", "label ASC", "label ASC", "label ASC", "label ASC", "rowid ASC"
+				"label ASC",
+				"label ASC",
+				"label ASC",
+				"label ASC",
+				"label ASC",
+				"label ASC",
+				"label ASC",
+				"rowid ASC"
 			),
 			'tabfield' => array(
-				"code,label", "code,label", "code,label", "code,label", "code,label", "ref,label,famille", "ref,label", "date_start,date_end,type_indice,amount",
+				"code,label",
+				"code,label",
+				"code,label",
+				"code,label",
+				"code,label",
+				"ref,label,famille",
+				"ref,label",
+				"date_start,date_end,type_indice,amount",
 			),
 			'tabfieldvalue' => array(
-				"code,label", "code,label", "code,label", "code,label", "code,label", "ref,label,famille", "ref,label", "date_start,date_end,type_indice,amount"
+				"code,label",
+				"code,label",
+				"code,label",
+				"code,label",
+				"code,label",
+				"ref,label,famille",
+				"ref,label",
+				"date_start,date_end,type_indice,amount"
 			),
 			'tabfieldinsert' => array(
-				"code,label", "code,label", "code,label", "code,label", "code,label", "ref,label,famille", "ref,label", "date_start,date_end,type_indice,amount"
+				"code,label",
+				"code,label",
+				"code,label",
+				"code,label",
+				"code,label",
+				"ref,label,famille",
+				"ref,label",
+				"date_start,date_end,type_indice,amount"
 			),
 			'tabrowid' => array(
-				"rowid", "rowid", "rowid", "rowid", "rowid", "rowid", "rowid", "rowid"
+				"rowid",
+				"rowid",
+				"rowid",
+				"rowid",
+				"rowid",
+				"rowid",
+				"rowid",
+				"rowid"
 			),
 			'tabcond' => array(
 				$conf->ultimateimmo->enabled,
@@ -287,10 +341,19 @@ class modUltimateimmo extends DolibarrModules
 		// Cronjobs (List of cron jobs entries to add when module is enabled)
 		// unit_frequency must be 60 for minute, 3600 for hour, 86400 for day, 604800 for week
 		$this->cronjobs = array(
-			0 => array('label' => 'MyJob label', 'jobtype' => 'method',
-				'class' => '/ultimateimmo/class/immorenter.class.php', 'objectname' => 'ImmoRenter',
-				'method' => 'doScheduledJob', 'parameters' => '', 'comment' => 'Comment',
-				'frequency' => 2, 'unitfrequency' => 3600, 'status' => 0, 'test' => true)
+			0 => array(
+				'label' => 'MyJob label',
+				'jobtype' => 'method',
+				'class' => '/ultimateimmo/class/immorenter.class.php',
+				'objectname' => 'ImmoRenter',
+				'method' => 'doScheduledJob',
+				'parameters' => '',
+				'comment' => 'Comment',
+				'frequency' => 2,
+				'unitfrequency' => 3600,
+				'status' => 0,
+				'test' => true
+			)
 		);
 		// Example: $this->cronjobs=array(0=>array('label'=>'My label', 'jobtype'=>'method', 'class'=>'/dir/class/file.class.php', 'objectname'=>'MyClass', 'method'=>'myMethod', 'parameters'=>'param1, param2', 'comment'=>'Comment', 'frequency'=>2, 'unitfrequency'=>3600, 'status'=>0, 'test'=>true),
 		//								1=>array('label'=>'My label', 'jobtype'=>'command', 'command'=>'', 'parameters'=>'param1, param2', 'comment'=>'Comment', 'frequency'=>1, 'unitfrequency'=>3600*24, 'status'=>0, 'test'=>true)
@@ -555,7 +618,7 @@ class modUltimateimmo extends DolibarrModules
 			'user' => 2
 		);                                // 0=Menu for internal users, 1=external users, 2=both
 
-///Owner
+		///Owner
 
 		$this->menu[$r++] = array(
 			'fk_menu' => 'fk_mainmenu=properties',
@@ -1181,7 +1244,7 @@ class modUltimateimmo extends DolibarrModules
 		global $langs;
 		$this->_load_tables('/ultimateimmo/sql/');
 
-		$sql=[];
+		$sql = [];
 		// Create extrafields
 		include_once DOL_DOCUMENT_ROOT . '/core/class/extrafields.class.php';
 		$extrafields = new ExtraFields($this->db);
@@ -1192,11 +1255,11 @@ class modUltimateimmo extends DolibarrModules
 		//$result4=$extrafields->addExtraField('myattr4', "New Attr 4 label", 'select',  1,  3, 'thirdparty',   0, 1, '', array('options'=>array('code1'=>'Val1','code2'=>'Val2','code3'=>'Val3')), 1 '', 0, 0, '', '', 'ultimateimmo@ultimateimmo', '$conf->ultimateimmo->enabled');
 		//$result5=$extrafields->addExtraField('myattr5', "New Attr 5 label", 'text',    1, 10, 'user',         0, 0, '', '', 1, '', 0, 0, '', '', 'ultimateimmo@ultimateimmo', '$conf->ultimateimmo->enabled');
 
-//		$sql = array(
-//			"REPLACE INTO " . MAIN_DB_PREFIX . "c_ultimateimmo_immoreceipt_status (rowid, code, label, active) VALUES
-//					(1, 'STATUS_DRAFT', '" . $langs->trans("Draft") . "', 1),
-//					(2, 'STATUS_VALIDATED', '" . $langs->trans("Validate") . "', 1);"
-//		);
+		//		$sql = array(
+		//			"REPLACE INTO " . MAIN_DB_PREFIX . "c_ultimateimmo_immoreceipt_status (rowid, code, label, active) VALUES
+		//					(1, 'STATUS_DRAFT', '" . $langs->trans("Draft") . "', 1),
+		//					(2, 'STATUS_VALIDATED', '" . $langs->trans("Validate") . "', 1);"
+		//		);
 
 		// Document templates
 		$moduledir = 'ultimateimmo';

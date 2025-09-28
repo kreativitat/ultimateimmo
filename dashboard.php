@@ -63,7 +63,7 @@ $globalboxes = array();
 // Color theme : (#96BBBB, #F2E3BC, #618985, #C19875)
 
 if ($user->rights->ultimateimmo->read) {
-    $globalboxes[] = array('name' => $langs->trans('MenuImmoOwner'), 'color' =>'#C19875',
+    $globalboxes[] = array('name' => $langs->trans('Proprietários'), 'color' =>'#C19875',
         'url' => dol_buildpath('/ultimateimmo/owner/immowner_list.php', 1),
         'url_add' => dol_buildpath('/ultimateimmo/owner/immoowner_card.php?action=create', 1),
         'right' => $user->rights->ultimateimmo->read,
@@ -76,7 +76,7 @@ if ($user->rights->ultimateimmo->read) {
 
 
 if ($user->rights->ultimateimmo->read) {
-    $globalboxes[] = array('name' => strtoupper($langs->trans('ImmoProperties')), 'color' =>'#96BBBB',
+    $globalboxes[] = array('name' => $langs->trans('IMOBILIÁRIO'), 'color' =>'#96BBBB',
         'url' => dol_buildpath('/ultimateimmo/property/immoproperty_list.php', 1),
         'url_add' => dol_buildpath('/ultimateimmo/property/immoproperty_card.php?action=create', 1),
         'right' => $user->rights->ultimateimmo->read,
@@ -88,7 +88,7 @@ if ($user->rights->ultimateimmo->read) {
 }
 
 if ($user->rights->ultimateimmo->read) {
-    $globalboxes[] = array('name' => strtoupper($langs->trans('MenuImmoRent')), 'color' =>'#F2E3BC',
+    $globalboxes[] = array('name' => $langs->trans('ARRENDAMENTOS'), 'color' =>'#F2E3BC',
         'url' => dol_buildpath('/ultimateimmo/property/immorent_list.php', 1),
         'url_add' => dol_buildpath('/ultimateimmo/rent/immorent_card.php?action=create', 1),
         'right' => $user->rights->ultimateimmo->read,
@@ -100,7 +100,7 @@ if ($user->rights->ultimateimmo->read) {
 }
 
 if ($user->rights->ultimateimmo->read) {
-    $globalboxes[] = array('name' => strtoupper($langs->trans('MenuImmoRenter')), 'color' =>'#C19875',
+    $globalboxes[] = array('name' => $langs->trans('INQUILINOS'), 'color' =>'#C19875',
         'url' => dol_buildpath('/ultimateimmo/renter/immorenter_list.php', 1),
         'url_add' => dol_buildpath('/ultimateimmo/renter/immorenter_card.php?action=create', 1),
         'right' => $user->rights->ultimateimmo->read,

@@ -37,7 +37,7 @@ require_once DOL_DOCUMENT_ROOT . '/core/lib/date.lib.php';
  */
 class ImmoOwner extends CommonObjectUltimateImmo
 {
- use CommonPeople;
+    use CommonPeople;
     /**
      * @var string ID to identify managed object
      */
@@ -124,10 +124,18 @@ class ImmoOwner extends CommonObjectUltimateImmo
         'phone_mobile' => array('type' => 'varchar(30)', 'label' => 'PhoneMobile', 'visible' => -1, 'enabled' => 1, 'position' => 80, 'notnull' => -1,),
         'date_creation' => array('type' => 'datetime', 'label' => 'DateCreation', 'visible' => -2, 'enabled' => 1, 'position' => 500, 'notnull' => 1,),
         'tms' => array('type' => 'timestamp', 'label' => 'DateModification', 'visible' => -2, 'enabled' => 1, 'position' => 501, 'notnull' => 1,),
-        'fk_user_creat' => array('type' => 'integer:User:user/class/user.class.php', 'label' => 'UserAuthor', 'visible' => -2, 'enabled' => 1, 'position' => 510, 'notnull' => 1, 'foreignkey' => 'llx_user.rowid',),
-        'fk_user_modif' => array('type' => 'integer:User:user/class/user.class.php', 'label' => 'UserModif', 'visible' => -2, 'enabled' => 1, 'position' => 511, 'notnull' => -1, 'foreignkey' => 'llx_user.rowid',),
+        'fk_user_creat' => array('type' => 'integer:User:user/class/user.class.php', 'label' => 'UserAuthor', 'visible' => -2, 'enabled' => 1, 'position' => 510, 'notnull' => 1, 'foreignkey' => 'user.rowid',),
+        'fk_user_modif' => array('type' => 'integer:User:user/class/user.class.php', 'label' => 'UserModif', 'visible' => -2, 'enabled' => 1, 'position' => 511, 'notnull' => -1, 'foreignkey' => 'user.rowid',),
         'import_key' => array('type' => 'varchar(14)', 'label' => 'ImportId', 'visible' => -2, 'enabled' => 1, 'position' => 1000, 'notnull' => -1,),
-        'status' => array('type' => 'integer', 'label' => 'Status', 'visible' => 1, 'enabled' => 1, 'position' => 1000, 'notnull' => 1, 'index' => 1, 'default' => 1,
+        'status' => array(
+            'type' => 'integer',
+            'label' => 'Status',
+            'visible' => 1,
+            'enabled' => 1,
+            'position' => 1000,
+            'notnull' => 1,
+            'index' => 1,
+            'default' => 1,
             'arrayofkeyval' => array(0 => 'Draft', 1 => 'Actif', 9 => 'Canceled')
         ),
     );

@@ -375,3 +375,83 @@ MyPageName = My page name
 #
 MyWidget = My widget
 MyWidgetDescription = My widget description
+
+# Menu
+MenuDictionarie=Admin. - Dictionary
+DictionaryDescExtra=Admin. - Dictionary
+
+# Objects
+ImmoIndice=Index
+
+# Extra Fields
+ExtraFieldsProperty = Extra Fields (Properties)
+ExtraFieldsRenter = Extra Fields (Renters)
+ExtraFieldsOwner = Extra Fields (Owners)
+ExtraFieldsPayment = Extra Fields (Payments)
+ExtraFieldsReceipt = Extra Fields (Receipts)
+ExtraFieldsRent = Extra Fields (Rents)
+
+# Admin translations
+Configuration=Configuration
+etatpaiement=Payment Status
+FreeLegalTextOnReceipts=Free legal text on receipts
+TypeCostForAdjust=Cost adjustment
+TypeCostForRenterProperty=Property rental cost type (renter cost report)
+TypeCostForRenterRenter=Renter cost type (renter cost report)
+MandataireRepresentation=if applicable, represented by the agent
+
+# Property translations
+LotFiscal=Fiscal lot
+GoogleMapsAddressNotFound=Address not found on Google Maps
+
+# Property field labels
+UISectioncadastrale=Cadastral section
+UIParcellecadastrale=Cadastral parcel
+UINumPrmEdf=EDF PRM Number
+UINumLigneNet=Internet line number
+
+# Meter readings
+ImmoCompteurDtFirst=Date of first reading
+ImmoCompteurDtFirstValue=Meter value at first reading
+ImmoCompteurDtLast=Date of last reading
+ImmoCompteurDtLastValue=Meter value at last reading
+ImmoCompteurDiff=Meter difference between first and last
+ImmoCompteurDtDiff=Number of days between first and last reading
+
+# Meter costs interface
+ListOfImmoCompteurCosts=List of Meter Costs
+TechnicalID=Technical ID
+Year=Year
+Amount=Amount
+Status=Status
+ImmoCompteur_Costs=Meter Costs
+MyFilter=My Filter
+CompteurType=Counter Type
+UIIndiceX=Index %d
+UICalcIndice=New Rent will be (Current rent * index 1) / index 2
+UIRevalIndice=Index Revaluation
+DateLastRegulCharge=Date last charge adjustment
+Payed=Paid
+ImmoCostChargesReelLocataireProperty=Real renter charges by property
+ImmoCostChargesReelLocataireRenter=Real renter charges by renter
+ImmoSpreadCost=Cost allocation
+OwnerLastName=Owner last name
+OwnerFirstName=Owner first name
+MissingConfigurationTypeCostForAdjust=Missing configuration TypeCostForAdjust
+ImmoReceipts=Receipts
+MenuNewImmoReceipt=New Receipt
+
+# Dashboard translations
+UltimateImmoDashboard=UltimateImmo Dashboard
+Proprietários=Owners
+MenuImmoActiveOwner=Active Owners
+MenuImmoNotActiveOwner=Inactive Owners
+IMOBILIÁRIO=REAL ESTATE
+ImmoActiveProperties=Active Properties
+ImmoNotActiveProperties=Inactive Properties
+ARRENDAMENTOS=RENTALS
+MenuImmoActiveRent=Active Rentals
+MenuImmoNotActiveRent=Inactive Rentals
+INQUILINOS=RENTERS
+MenuImmoActiveRenter=Active Renters
+MenuImmoNotActiveRenter=Inactive Renters

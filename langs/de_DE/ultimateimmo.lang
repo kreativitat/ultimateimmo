@@ -303,3 +303,84 @@ PaymentMode = Zahlungsmethode
 Contract = Vertrag
 ShowMandataireDetails = Agentendetails anzeigen
 ShowColocataireDetails = Mitbewohnerdetails anzeigen
+
+# Menu
+MenuDictionarie=Admin. - Wörterbuch
+DictionaryDescExtra=Admin. - Wörterbuch
+
+# Objects
+ImmoIndice=Index
+
+# Extra Fields
+ExtraFieldsProperty = Zusätzliche Felder (Immobilien)
+ExtraFieldsRenter = Zusätzliche Felder (Mieter)
+ExtraFieldsOwner = Zusätzliche Felder (Eigentümer)
+ExtraFieldsPayment = Zusätzliche Felder (Zahlungen)
+ExtraFieldsReceipt = Zusätzliche Felder (Quittungen)
+ExtraFieldsRent = Zusätzliche Felder (Mieten)
+
+# Admin translations
+Configuration=Konfiguration
+etatpaiement=Zahlungsstatus
+FreeLegalTextOnReceipts=Freier Rechtstext auf Quittungen
+TypeCostForAdjust=Kostenanpassung
+TypeCostForRenterProperty=Immobilien-Mietkosten-Typ (Mieterkosten-Bericht)
+TypeCostForRenterRenter=Mieterkosten-Typ (Mieterkosten-Bericht)
+MandataireRepresentation=falls zutreffend, vertreten durch den Makler
+
+# Property translations
+GoogleMapsAddressNotFound=Adresse nicht auf Google Maps gefunden
+
+# Property field labels
+UISectioncadastrale=Katasterabschnitt
+UIParcellecadastrale=Katasterparzelle
+UINumPrmEdf=EDF PRM-Nummer
+UINumLigneNet=Internet-Leitungsnummer
+
+# Meter readings
+ImmoCompteurDtFirst=Datum der ersten Ablesung
+ImmoCompteurDtFirstValue=Zählerwert bei der ersten Ablesung
+ImmoCompteurDtLast=Datum der letzten Ablesung
+ImmoCompteurDtLastValue=Zählerwert bei der letzten Ablesung
+ImmoCompteurDiff=Zählerdifferenz zwischen erster und letzter
+ImmoCompteurDtDiff=Anzahl Tage zwischen erster und letzter Ablesung
+
+# Meter costs interface
+ListOfImmoCompteurCosts=Liste der Zählerkosten
+TechnicalID=Technische ID
+Year=Jahr
+Amount=Betrag
+Status=Status
+ImmoCompteur_Costs=Zählerkosten
+MyFilter=Mein Filter
+CompteurType=Zählertyp
+ImmoCompteurType=Zählertyp
+ImmoCompteurTypeInfo=Zählertyp (Wasser, Gas, andere...) im Wörterbuch erstellt
+UIIndiceX=Index %d
+UICalcIndice=Neue Miete wird sein (Aktuelle Miete * Index 1) / Index 2
+UIRevalIndice=Index-Neubewertung
+DateLastRegulCharge=Datum der letzten Gebührenanpassung
+Payed=Bezahlt
+ImmoCostChargesReelLocataireProperty=Echte Mieterkosten nach Immobilie
+ImmoCostChargesReelLocataireRenter=Echte Mieterkosten nach Mieter
+ImmoSpreadCost=Kostenverteilung
+OwnerLastName=Nachname des Eigentümers
+OwnerFirstName=Vorname des Eigentümers
+MissingConfigurationTypeCostForAdjust=Fehlende Konfiguration TypeCostForAdjust
+ImmoReceipts=Quittungen
+MenuNewImmoReceipt=Neue Quittung
+
+# Dashboard translations
+UltimateImmoDashboard=UltimateImmo Dashboard
+Proprietários=Eigentümer
+MenuImmoActiveOwner=Aktive Eigentümer
+MenuImmoNotActiveOwner=Inaktive Eigentümer
+IMOBILIÁRIO=IMMOBILIEN
+ImmoActiveProperties=Aktive Immobilien
+ImmoNotActiveProperties=Inaktive Immobilien
+ARRENDAMENTOS=MIETEN
+MenuImmoActiveRent=Aktive Mieten
+MenuImmoNotActiveRent=Inaktive Mieten
+INQUILINOS=MIETER
+MenuImmoActiveRenter=Aktive Mieter
+MenuImmoNotActiveRenter=Inaktive Mieter

@@ -51,9 +51,9 @@ UltimateimmoPublicInterfaceForbidden = L'interface publique pour les tickets n'a
 ExtraFieldsProperty = Attributs supplémentaires (Propriétés)
 ExtraFieldsRenter = Attributs supplémentaires (Locataires)
 ExtraFieldsOwner = Attributs supplémentaires (Propriétaires)
-ExtraFieldsPayment =  = Attributs supplémentaires (Paiements)
+ExtraFieldsPayment = Attributs supplémentaires (Paiements)
 ExtraFieldsReceipt = Attributs supplémentaires (Quittances)
-ExtraFieldsRent =  = Attributs supplémentaires (Locations)
+ExtraFieldsRent = Attributs supplémentaires (Locations)
 EnumerationOfPartsAndCommonEquipment=Énumération des parties et équipements commun.
 UltimateImmoEquipementGardiennage=Gardiennage
 UltimateImmoEquipementInterphone=lnterphone
@@ -74,6 +74,8 @@ UltimateimmoAboutPage = Page à propos de Ultimateimmo
 #
 # Configuration
 #
+Configuration=Configuration
+etatpaiement=État des paiements
 FreeLegalTextOnReceipts = Texte libre sur les quittances
 TypeCostForAdjust = Ajustement des coûts
 
@@ -418,6 +420,15 @@ ImmoCompteurDtLastValue=Compteur au dernier relevé
 ImmoCompteurDiff=Différence Compteur entre le 1er et le dernier
 ImmoCompteurDtDiff=Nb de Jour entre 1er relevé et dernier relevé
 
+# Meter costs interface
+ListOfImmoCompteurCosts=Liste des Coûts de Compteurs
+TechnicalID=ID Technique
+Year=Année
+Amount=Montant
+Status=Statut
+MyFilter=Mon Filtre
+CompteurType=Type de Compteur
+
 UISectioncadastrale=Section cadastrale
 UIParcellecadastrale=Parcelle cadastrale
 UINumPrmEdf=Num. PRM EDF
@@ -428,6 +439,8 @@ MenuDictionarie=Admin. - Dictionnaire
 MenuSpreadCharges = (Beta) Répartition charges
 
 ImmoIndice=Indice
+MandataireRepresentation=le cas échéant, représenté par le mandataire
+GoogleMapsAddressNotFound=Adresse non trouvée sur Google Maps
 
 DictionaryDescExtra = Admin. - Dictionnaire
 UIRevalIndice=Revalorisation Indice
@@ -466,6 +479,25 @@ DetailPayment=Détail Paiement
 
 InputCounterWarter=Saisie Compteur Eaux
 CounterNotAllowedInput=Vous ne pouvez pas saisir un relevé de compteur sur ce compteur
+Payed=Payé
+MissingConfigurationTypeCostForAdjust=Configuration TypeCostForAdjust manquante
+ImmoReceipts=Reçus
+MenuNewImmoReceipt=Nouveau Reçu
+
+# Dashboard translations
+UltimateImmoDashboard=Tableau de bord UltimateImmo
+Proprietários=Propriétaires
+MenuImmoActiveOwner=Propriétaires Actifs
+MenuImmoNotActiveOwner=Propriétaires Inactifs
+IMOBILIÁRIO=IMMOBILIER
+ImmoActiveProperties=Propriétés Actives
+ImmoNotActiveProperties=Propriétés Inactives
+ARRENDAMENTOS=LOCATIONS
+MenuImmoActiveRent=Locations Actives
+MenuImmoNotActiveRent=Locations Inactives
+INQUILINOS=LOCATAIRES
+MenuImmoActiveRenter=Locataires Actifs
+MenuImmoNotActiveRenter=Locataires Inactifs
 
 RenterLetToPay=Encours locataire
 

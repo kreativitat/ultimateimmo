@@ -134,9 +134,9 @@ if (empty($reshook)) {
 
 	if ($action == 'regulcharge_confirm') {
 		//$dt_start = dol_mktime(0, 0, 0, GETPOST('dt_startmonth', 'int'), GETPOST('dt_startday', 'int'), GETPOST('dt_startyear', 'int'));
-		$dt_start =GETPOST('dt_start','int');
+		$dt_start = GETPOST('dt_start', 'int');
 		//$dt_end = dol_mktime(23, 59, 59, GETPOST('dt_endmonth', 'int'), GETPOST('dt_endday', 'int'), GETPOST('dt_endyear', 'int'));
-		$dt_end =GETPOST('dt_end','int');
+		$dt_end = GETPOST('dt_end', 'int');
 		$chargeAmount = GETPOST('total_charge', 'int');
 		$receipt = new ImmoReceipt($db);
 		$resultData = $receipt->fetchAll('', '', 0, 0, array('t.fk_rent' => $object->fk_rent, 'finddate' => array('dtstart' => $dt_start, 'dtend' => $dt_end)));
@@ -155,7 +155,7 @@ if (empty($reshook)) {
 		$object->note_private = $langs->trans('NoteRegulCharge', dol_print_date($dt_start), dol_print_date($dt_end), price($totalChargeAllocated) . ' €');
 		$object->note_private = dol_concatdesc($object->note_private, $langs->trans('NoteRegulTotalCharge', $chargeAmount) . ' €');
 		$object->note_private = dol_concatdesc($object->note_private, $langs->trans('NoteRegulLetToPaid', $newCharge) . ' €');
-		$object->note_private = dol_concatdesc($object->note_private, $langs->trans('RegulChargeStepDesc', GETPOST('first_qty'),GETPOST('end_qty')) . ' €');
+		$object->note_private = dol_concatdesc($object->note_private, $langs->trans('RegulChargeStepDesc', GETPOST('first_qty'), GETPOST('end_qty')) . ' €');
 		$result = $object->update($user);
 
 		if ($result < 0) {
@@ -184,6 +184,7 @@ if (empty($reshook)) {
 		$receipt->fetch($id);
 		$result = $receipt->set_paid($user);
 		Header("Location: " . $_SERVER['PHP_SELF'] . '?id=' . $id);
+		exit();
 	}
 
 	/**
@@ -555,7 +556,9 @@ $formfile = new FormFile($db);
 $paymentstatic = new ImmoPayment($db);
 $bankaccountstatic = new Account($db);
 
-llxHeader('', $langs->trans("MenuNewImmoReceipt"), '');
+$help_url = '';
+//$help_url='EN:Module_Third_Parties|FR:Module_Tiers|ES:Empresas';
+llxHeader('', $langs->trans("ImmoReceipts"), $help_url);
 
 // Load object modReceipt
 $module = (!empty($conf->global->ULTIMATEIMMO_ADDON_NUMBER) ? $conf->global->ULTIMATEIMMO_ADDON_NUMBER : 'mod_ultimateimmo_standard');
@@ -572,7 +575,7 @@ if ($result >= 0) {
 
 // Part to create
 if ($action == 'create') {
-	print load_fiche_titre($langs->transnoentitiesnoconv("MenuNewImmoReceipt"), '', 'object_' . $object->picto);
+	print load_fiche_titre($langs->transnoentitiesnoconv("MenuNewImmoReceipt"));
 
 	$year_current = strftime("%Y", dol_now());
 	$pastmonth = strftime("%m", dol_now());
@@ -613,7 +616,8 @@ if ($action == 'create') {
 		print '</td>';
 		print '<td>';
 
-		if ($val['label'] == 'Ref'
+		if (
+			$val['label'] == 'Ref'
 		) {
 			// Reference
 			if (!empty($modCodeReceipt->code_auto)) {
@@ -634,7 +638,15 @@ if ($action == 'create') {
 		} elseif ($val['label'] == 'Echeance') {
 			// Echeance
 			print $form->selectDate(($object->date_echeance ? $object->date_echeance : -1),
-				"date_echeance", 0, 0, 0, "", 1, 1, 1);
+				"date_echeance",
+				0,
+				0,
+				0,
+				"",
+				1,
+				1,
+				1
+			);
 		} else {
 			if (in_array($val['type'], array('int', 'integer'))) $value = GETPOST($key, 'int');
 
@@ -814,7 +826,7 @@ if ($action == 'createall') {
 
 // Part to edit record
 if (($id || $ref) && $action == 'edit') {
-	print load_fiche_titre($langs->trans("MenuNewImmoReceipt", $langs->transnoentitiesnoconv("ImmoReceipt")));
+	print load_fiche_titre($langs->trans("Modify") . ' ' . $langs->transnoentitiesnoconv("ImmoReceipt"));
 
 	$receipt = new ImmoReceipt($db);
 	$result = $receipt->fetch($id);
@@ -980,15 +992,15 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 
 				dol_include_once('/ultimateimmo/class/immocompteur_cost.class.php');
 				$cptCost = new ImmoCompteur_Cost($db);
-				$resultCptCost = $cptCost->fetchAll('','',0,0,array('t.status'=>$cptCost::STATUS_VALIDATED));
-				if (!is_array($resultCptCost) && $resultCptCost<0) {
-					setEventMessages($cptCost->error,$cptCost->errors,'errors');
+				$resultCptCost = $cptCost->fetchAll('', '', 0, 0, array('t.status' => $cptCost::STATUS_VALIDATED));
+				if (!is_array($resultCptCost) && $resultCptCost < 0) {
+					setEventMessages($cptCost->error, $cptCost->errors, 'errors');
 				} else {
-					$cost_cpt=array();
+					$cost_cpt = array();
 					if (!empty($resultCptCost)) {
-						foreach($resultCptCost as $cptc) {
+						foreach ($resultCptCost as $cptc) {
 							//TODO get compteur type
-							$cost_cpt[$cptc->id] = $cptc->cost_year. ' ( '.price($cptc->amount) .')';
+							$cost_cpt[$cptc->id] = $cptc->cost_year . ' ( ' . price($cptc->amount) . ')';
 						}
 					}
 
@@ -1017,7 +1029,7 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 			//Calcul Total Charge
 			$sql = "SELECT qty FROM " . MAIN_DB_PREFIX . "ultimateimmo_immocompteur WHERE fk_immoproperty=" . (int)$rent->fk_property;
 			$sql .= " AND date_relever='" . $db->idate($dtStart) . "'";
-			$firstQty=0;
+			$firstQty = 0;
 			$resql = $db->query($sql);
 			if (!$resql) {
 				setEventMessages($db->lasterror, null, 'errors');
@@ -1028,7 +1040,7 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 
 			$sql = "SELECT qty FROM " . MAIN_DB_PREFIX . "ultimateimmo_immocompteur WHERE fk_immoproperty=" . (int)$rent->fk_property;
 			$sql .= " AND date_relever='" . $db->idate($dtEnd) . "'";
-			$endQty=0;
+			$endQty = 0;
 			$resql = $db->query($sql);
 			if (!$resql) {
 				setEventMessages($db->lasterror, null, 'errors');
@@ -1037,23 +1049,23 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 				$endQty = $objQty->qty;
 			}
 
-			$diffCpt = $endQty-$firstQty;
+			$diffCpt = $endQty - $firstQty;
 
 			dol_include_once('/ultimateimmo/class/immocompteur_cost.class.php');
 			$cptCost = new ImmoCompteur_Cost($db);
-			$result = $cptCost->fetch(GETPOST('cost_cpt','int'));
+			$result = $cptCost->fetch(GETPOST('cost_cpt', 'int'));
 			if ($result < 0) {
 				setEventMessages($cptCost->error, $cptCost->errors, 'errors');
 			}
-			$estimatedCost =0;
+			$estimatedCost = 0;
 			if (!empty($cptCost->amount)) {
-				$estimatedCost = $diffCpt*$cptCost->amount;
+				$estimatedCost = $diffCpt * $cptCost->amount;
 			}
 
 
 
 			$formquestion = array(
-				'text' => $langs->trans("RegulChargeStep2",$firstQty,$endQty,$diffCpt,$cptCost->amount),
+				'text' => $langs->trans("RegulChargeStep2", $firstQty, $endQty, $diffCpt, $cptCost->amount),
 				array('type' => 'text', 'name' => 'total_charge', 'label' => $langs->trans("TotalCharge"), 'value' => $estimatedCost),
 				array('type' => 'hidden', 'name' => 'first_qty', 'value' => $firstQty),
 				array('type' => 'hidden', 'name' => 'end_qty', 'value' => $endQty),
@@ -1313,7 +1325,7 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 
 			print '<td class="right">';
 			if ($user->admin) {
-				print '<a href="' . dol_buildpath('/ultimateimmo/payment/immopayment_card.php', 1) . '?id=' . $objp->rowid . "&amp;action=delete&amp;receipt=" . $id . '&token='.newToken().'">';
+				print '<a href="' . dol_buildpath('/ultimateimmo/payment/immopayment_card.php', 1) . '?id=' . $objp->rowid . "&amp;action=delete&amp;receipt=" . $id . '&token=' . newToken() . '">';
 				print img_delete();
 				print '</a>';
 			}
@@ -1338,7 +1350,7 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 	} else {
 		dol_print_error($db);
 	}
-$remaintopay = $object->total_amount - $object->getSommePaiement();
+	$remaintopay = $object->total_amount - $object->getSommePaiement();
 	print '</table>';
 	print '</div>';
 	print '</div>';

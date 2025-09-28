@@ -572,7 +572,7 @@ print '</form>';
 print load_fiche_titre($langs->trans("OtherOptions"));
 
 // Addresses
-print load_fiche_titre($langs->trans("- le cas échéant, représenté par le mandataire"), '', '') . '<br>';
+print load_fiche_titre($langs->trans("MandataireRepresentation"), '', '') . '<br>';
 
 print '<table class="noborder" width="100%">';
 print '<tr class="liste_titre">';
