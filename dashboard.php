@@ -145,7 +145,7 @@ if (GETPOST('addbox'))	// Add box (when submit is done from a form when ajax dis
 if (! is_object($form)) $form=new Form($db);
 
 // Translations
-$langs->loadLangs(array("admin", "ultimateimmo@gultimateimmo"));
+$langs->loadLangs(array("admin", "ultimateimmo@ultimateimmo"));
 
 // Title
 $title = $langs->trans("UltimateImmoDashboard");
@@ -156,7 +156,6 @@ $resultboxes = UltimateImmoGetBoxesArea($user, "0");    // Load $resultboxes (se
 $morehtmlright = $resultboxes['selectboxlist'];
 
 print load_fiche_titre($langs->trans("UltimateImmoDashboard"), $morehtmlright, 'ultimateimmo_minimized@ultimateimmo');
-print '<div class="dashboardBtnContainer">'.$button.'</div>';
 
 /*
  * Demo text
@@ -224,7 +223,8 @@ if ($user->rights->ultimateimmo->read) {
 				$lineData[]=array(
 					'title' => $objp->nom,
 					'value' => price($objp->totalbalance),
-					'url' => dol_buildpath('custom/ultimateimmo/payment/immopayment_card.php', 1).'?action=createall&search_renter='.urlencode($objp->nom));
+					'url' => dol_buildpath('custom/ultimateimmo/payment/immopayment_card.php', 1).'?action=createall&search_renter='.urlencode($objp->nom)
+				);
 			}
 
 			$globalboxes[] = array('name' => strtoupper($langs->trans('RenterLetToPay')), 'color' => '#C19875',
@@ -417,7 +417,6 @@ function UltimateImmoGetBoxesArea($user, $areacode)
         $ii=0;
         foreach ($boxactivated as $key => $box)
         {
-			var_dump($box);
             if ((! empty($user->conf->$confuserzone) && $box->fk_user == 0) || (empty($user->conf->$confuserzone) && $box->fk_user != 0)) continue;
             if (empty($box->box_order) && $ii < ($nbboxactivated / 2)) $box->box_order='A'.sprintf("%02d", ($ii+1)); // When box_order was not yet set to Axx or Bxx and is still 0
             if (preg_match('/^A/i', $box->box_order)) // column A
