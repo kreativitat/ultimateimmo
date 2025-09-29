@@ -86,7 +86,7 @@ legend {
 }
 
 div.mainmenu.properties {
-	background-image: url(<?php echo dol_buildpath('/ultimateimmo/img/immoproperty.png', 1) ?>);
+	background-image: url(<?php echo dol_buildpath('/ultimateimmo/img/object_immoproperty.png', 1) ?>);
 }
 
 div.mainmenu.immoowners {
@@ -120,24 +120,28 @@ div.mainmenu.result {
 /* Card for dashboard */
 .ultimateimmo-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-	grid-gap: 30px;
-	align-items: stretch;
+	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+	grid-gap: 20px;
+	align-items: start;
 	justify-items: center;
+	width: 100%;
+	box-sizing: border-box;
 }
 
 .ultimateimmo-card {
 	width: 300px;
 	min-height: 120px;
+	max-width: 100%;
 	background-color: #fff;
 	border-radius: .5em;
 	color: #fff;
 	box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 	padding: 0;
 	display: flex;
-	margin-right: 1%;
-	margin-bottom: 1%;
+	margin: 0;
 	transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+	position: relative;
+	box-sizing: border-box;
 }
 
 .ultimateimmo-card:hover {
@@ -204,12 +208,33 @@ div.mainmenu.result {
 .ultimateimmo-card-list {
 	width: 550px;
 	min-height: 110px;
+	max-width: 100%;
 	background-color: #fff;
-	border-radius: .25em;
+	border-radius: .5em;
 	color: #fff;
-	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 	padding: 0;
 	display: flex;
-	margin-right: 1%;
-	margin-bottom: 1%;
+	margin: 0 0 20px 0;
+	box-sizing: border-box;
+	position: relative;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+	.ultimateimmo-grid {
+		grid-template-columns: 1fr;
+		grid-gap: 15px;
+		padding: 0 10px;
+	}
+
+	.ultimateimmo-card {
+		width: 100%;
+		max-width: none;
+	}
+
+	.ultimateimmo-card-list {
+		width: 100%;
+		max-width: none;
+	}
 }
