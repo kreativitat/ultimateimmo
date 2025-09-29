@@ -136,7 +136,7 @@ class ImmoOwner extends CommonObjectUltimateImmo
             'notnull' => 1,
             'index' => 1,
             'default' => 1,
-            'arrayofkeyval' => array(0 => 'Draft', 1 => 'Actif', 9 => 'Canceled')
+            'arrayofkeyval' => array(0 => 'Draft', 1 => 'Ativo', 9 => 'Canceled')
         ),
     );
 
@@ -681,10 +681,10 @@ class ImmoOwner extends CommonObjectUltimateImmo
             global $langs;
             //$langs->load("mymodule");
             $this->labelStatus[self::STATUS_DRAFT]          = $langs->trans('Draft');
-            $this->labelStatus[self::STATUS_VALIDATED]      = $langs->trans('Actif');
+            $this->labelStatus[self::STATUS_VALIDATED]      = $langs->trans('Ativo');
             $this->labelStatus[self::STATUS_CANCELED]       = $langs->trans('Disabled');
             $this->labelStatusShort[self::STATUS_DRAFT]     = $langs->trans('Draft');
-            $this->labelStatusShort[self::STATUS_VALIDATED] = $langs->trans('Actif');
+            $this->labelStatusShort[self::STATUS_VALIDATED] = $langs->trans('Ativo');
             $this->labelStatusShort[self::STATUS_CANCELED]  = $langs->trans('Disabled');
         }
 

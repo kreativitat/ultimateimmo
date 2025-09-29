@@ -459,3 +459,11 @@ MenuImmoNotActiveRent=Arrendamentos Inativos
 INQUILINOS=INQUILINOS
 MenuImmoActiveRenter=Inquilinos Ativos
 MenuImmoNotActiveRenter=Inquilinos Inativos
+
+# Civility translations without parentheses
+CivilityMME=Sra.
+CivilityMR=Sr.
+CivilityMLE=Srta.
+CivilityMTRE=Mestre
+CivilityDR=Dr.
+CivilityENG=Eng.
